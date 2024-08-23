@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>clock</title>
+    <style>
+        /* body {
+            background: url(dark.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } */
+        .container {
+            width: 100%;
+            /* border: 2px solid; */
+        }
+
+        .circle {
+            position: relative;
+            height: 25em;
+            width: 25em;
+            margin: auto;
+            /* background-color: rgba(55, 57, 55, 0.733); */
+            background: radial-gradient(circle, rgb(0, 204, 255), rgb(255, 0, 217));
+            border-radius: 50%;
+            box-shadow: 0 0 60px 10px rgb(56, 243, 140);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid rgb(17, 18, 17);
+        }
+
+        .circle div {
+            color: rgb(253, 253, 252);
+            position: absolute;
+            transform: rotate(calc(30deg * var(--n)));
+            inset: 10px;
+            text-align: center;
+        }
+
+        .circle div b {
+            transform: rotate(calc(-30deg * var(--n)));
+            display: inline-block;
+        }
+
+        .circle::before {
+            content: '';
+            position: absolute;
+            height: 1em;
+            width: 1em;
+            /* background-color: rgb(0, 238, 255); */
+            background: linear-gradient(rgb(0, 204, 255), rgb(255, 0, 217));
+            border: 2px solid;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgb(94, 59, 250);
+
+        }
+
+        .circle::before {
+            /* background-color: rgb(252, 3, 210); */
+
+            border-radius: 50%;
+            z-index: 4;
+        }
+
+        .hand {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .hand i {
+            background-color: var(--dc);
+            position: absolute;
+            z-index: 2;
+        }
+
+        .sec i {
+            height: 11em;
+            width: 1px;
+            bottom: 12em;
+            background-color: rgb(252, 3, 3);
+            /* border: 1px solid red; */
+            border-radius: 6px;
+            z-index: 2;
+        }
+
+        .hour i {
+            height: 8em;
+            width: .2em;
+            /* transform-origin: ; */
+            bottom: 12em;
+            background-color: rgb(254, 253, 253);
+            /* border: 1px solid; */
+            border-radius: 6px;
+            z-index: 2;
+        }
+
+        .min i {
+            height: 10em;
+            width: .1em;
+            bottom: 12em;
+            background-color: rgb(253, 254, 255);
+            /* border: 1px solid; */
+            border-radius: 6px;
+            z-index: 2;
+        }
+
+        h2 {
+            position: absolute;
+            color: rgb(9, 9, 9);
+            z-index: 4;
+            bottom: 50px;
+        }
+
+        .circle .num b {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="circle">
+            <h2>Designed by Prince Mishra</h2>
+
+            <div class="hand hour"><i></i></div>
+            <div class="hand min"><i></i></div>
+            <div class="hand sec"><i></i></div>
+            <div class="1 num" style="--n:1"><b>1</b></div>
+            <div class="2 num" style="--n:2"><b>2</b></div>
+            <div class="3 num" style="--n:3"><b>3</b></div>
+            <div class="4 num" style="--n:4"><b>4</b></div>
+            <div class="5 num" style="--n:5"><b>5</b></div>
+            <div class="6 num" style="--n:6"><b>6</b></div>
+            <div class="7 num" style="--n:7"><b>7</b></div>
+            <div class="8 num" style="--n:8"><b>8</b></div>
+            <div class="9 num" style="--n:9"><b>9</b></div>
+            <div class="10 num" style="--n:10"><b>10</b></div>
+            <div class="11 num" style="--n:11"><b>11</b></div>
+            <div class="12 num" style="--n:12"><b>12</b></div>
+        </div>
+    </div>
+</body>
+<script>
+
+    setInterval(function () {
+        let newDate = new Date()
+        let hour = newDate.getHours()
+        let min = newDate.getMinutes()
+        let sec = newDate.getSeconds()
+        hRotate = (30 * hour + min / 2)
+        minRotate = 6 * min
+        secRotate = 6 * sec
+
+        document.querySelector('.hour').style.transform = `rotate(${hRotate}deg)`
+        document.querySelector('.min').style.transform = `rotate(${minRotate}deg)`
+        document.querySelector('.sec').style.transform = `rotate(${secRotate}deg)`
+        // document.querySelector('.sec').style.transformOrigin
+        // document.querySelector('.sec').style.animation = 
+
+    }, 1000)
+
+</script>
+
+</html>
